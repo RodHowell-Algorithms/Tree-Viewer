@@ -6,7 +6,7 @@ The remainder of this page describes how to install and use the package on your 
 
 ## Installation
 
-To install the package, simply download the JAR archive `viewer.jar`. 
+To install the package, simply download the JAR archive [`viewer.jar`](https://github.com/RodHowell-Algorithms/Tree-Viewer/raw/main/viewer.jar). 
 
 ## Usage
 
@@ -35,7 +35,7 @@ The complete package documentation can be found in the `doc` folder.
 
 ## Compiling the Code
 
-If you wish to modify the code, you will need to download a copy, either by cloning it with `git` or by downloading and decompressing a [ZIP archive](https://github.com/RodHowell-Algorithms/Tree-Viewer/archive/refs/heads/main.zip). To compile the code, assuming you have the [Java Development Kit (JDK)](https://www.java.com/en/download/manual.jsp) installed, enter the following from a command line within the root folder of the project (i.e., the one containing a single subfolder, `edu`):
+If you wish to modify the code, you will need to download a copy, either by cloning it with `git` or by downloading and decompressing a [ZIP archive](https://github.com/RodHowell-Algorithms/Tree-Viewer/archive/refs/heads/main.zip). To compile the code, assuming you have the [Java Development Kit (JDK)](https://www.java.com/en/download/manual.jsp) installed, enter the following from a command line within the root folder of the project (i.e., the one containing the subfolders, `doc` and `edu`):
 
 <pre>
 javac edu/ksu/cis/viewer/*.java
@@ -44,7 +44,7 @@ javac edu/ksu/cis/viewer/*.java
 (Depending on your shell, you may need to replace each '/' with '\\'.) To run the program after compiling it:
 
 <pre>
-java edu.ksu.cis.maxsum.MaxSum
+java edu.ksu.cis.viewer.Viewer
 </pre>
 
 ## Related Applications
@@ -54,6 +54,6 @@ The following programs use the viewer package to render trees:
 - [Heap Viewer](https://github.com/RodHowell-Algorithms/Heap-Viewer)
 - [Minimum-Sized AVL Tree Viewer](https://github.com/RodHowell-Algorithms/Min-AVL-Trees)
 - [Huffman Tree Viewer](https://github.com/RodHowell-Algorithms/Huffman-Tree-Viewer)
-- [Suffix Tree Viewer]()
+- [Suffix Tree Viewer](https://github.com/RodHowell-Algorithms/Suffix-Tree-Viewer)
 
 
