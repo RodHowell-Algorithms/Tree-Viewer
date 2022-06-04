@@ -79,12 +79,11 @@ public class Viewer extends Panel {
     }
     choices.setSelectedIndex(0);
     choices.setEditable(false);
-    Container content = this;
-    content.setLayout(new FlowLayout());
-    content.add(choices);
+    setLayout(new FlowLayout());
+    add(choices);
     JButton st = new JButton("Start");
     st.addActionListener(new StartButtonListener(this));
-    content.add(st);
+    add(st);
   }
 
   /**
