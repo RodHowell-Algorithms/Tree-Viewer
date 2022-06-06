@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JComponent;
-
+import java.io.Serializable;
 
 
 /**
@@ -31,7 +31,7 @@ import javax.swing.JComponent;
  * their Unicode values.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  *
  */
 public final class Trie implements BSTInterface, TreeInterface {
@@ -63,6 +63,11 @@ public final class Trie implements BSTInterface, TreeInterface {
    * the end of a stored string, or black otherwise.
    */
   private static TrieColorizer theColorizer = new TrieColorizer();
+
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Constructs an empty Trie.
@@ -244,7 +249,7 @@ public final class Trie implements BSTInterface, TreeInterface {
 /**
  * The node to be drawn at the root of a <code>Trie</code>.
  */
-class TrieNode {
+class TrieNode implements Serializable {
 
   /**
    * The character to be drawn.
@@ -255,6 +260,11 @@ class TrieNode {
    * <code>true</code> if this node denotes the end of a String.
    */
   private boolean isWord;
+
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Constructs a TrieNode.

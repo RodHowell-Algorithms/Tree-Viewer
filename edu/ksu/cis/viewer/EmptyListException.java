@@ -14,11 +14,17 @@ package edu.ksu.cis.viewer;
  * an emtpy ConsList.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  *
  * @see ConsList
  */
 public class EmptyListException extends RuntimeException {
+
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * Constructs a new <code>EmptyListException</code>.
    */

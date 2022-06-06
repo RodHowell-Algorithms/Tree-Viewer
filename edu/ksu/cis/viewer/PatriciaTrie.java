@@ -27,7 +27,7 @@ import javax.swing.JComponent;
  * string.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  *
  */
 public final class PatriciaTrie implements BSTInterface, TreeInterface {
@@ -53,6 +53,11 @@ public final class PatriciaTrie implements BSTInterface, TreeInterface {
    * The root of this PatriciaTrie.
    */
   private String root;
+
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Constructs an empty PatriciaTrie.

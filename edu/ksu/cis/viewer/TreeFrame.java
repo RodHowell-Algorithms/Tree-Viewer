@@ -24,12 +24,17 @@ import javax.swing.JScrollPane;
  * displaying the tree.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  *
  * @see TreeInterface
  * @see TreeComponent
  */
 public class TreeFrame extends JFrame {
+
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Contstructs a TreeFrame displaying the given tree.  The frame has

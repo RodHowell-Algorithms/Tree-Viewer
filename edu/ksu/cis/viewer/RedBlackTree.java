@@ -25,7 +25,7 @@ import javax.swing.JComponent;
  * </ol>
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  */
 public final class RedBlackTree implements BSTInterface {
 
@@ -33,6 +33,11 @@ public final class RedBlackTree implements BSTInterface {
    * The tree.  
    */
   private BinaryTree theTree;
+
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Constructs an empty RedBlackTree.

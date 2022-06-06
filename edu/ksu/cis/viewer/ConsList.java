@@ -7,16 +7,16 @@
 
 package edu.ksu.cis.viewer;
 
-
+import java.io.Serializable;
 
 /**
- * An immutable linear recursive structure with a head, which is an Object, and
+ * An immutable linear recursive structure with a head and
  * a tail, which is a ConsList.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  */
-public final class ConsList {
+public final class ConsList<E extends Serializable> implements Serializable {
 
   /**
    * Is <code>true</code> if this <code>ConsList</code> is empty.
@@ -26,12 +26,17 @@ public final class ConsList {
   /**
    * The head of this <code>ConsList</code>.
    */
-  private Object head;
+  private E head;
 
   /**
    * The tail of this <code>ConsList</code>.
    */
-  private ConsList tail;
+  private ConsList<E> tail;
+
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Constructs an empty ConsList.
@@ -46,10 +51,10 @@ public final class ConsList {
    * @param    h        the head of the list
    * @param    lst      the tail of the list
    */
-  public ConsList(Object h, ConsList lst) {
+  public ConsList(E h, ConsList<E> lst) {
     empty = false;
     head = h;
-    tail = lst == null ? new ConsList() : lst;
+    tail = lst == null ? new ConsList<E>() : lst;
   }
 
   /**
@@ -66,7 +71,7 @@ public final class ConsList {
    * @exception         EmptyListException
    *                    If this list is empty.
    */
-  public Object getHead() throws EmptyListException {
+  public E getHead() throws EmptyListException {
     if (empty) {
       throw new EmptyListException();
     }
@@ -79,7 +84,7 @@ public final class ConsList {
    * @exception         EmptyListException
    *                    If this list is empty.
    */
-  public ConsList getTail() throws EmptyListException {
+  public ConsList<E> getTail() throws EmptyListException {
     if (empty) {
       throw new EmptyListException();
     }

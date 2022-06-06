@@ -7,7 +7,7 @@
 package edu.ksu.cis.viewer;
 
 import java.awt.Color;
-
+import java.io.Serializable;
 
 
 /**
@@ -17,11 +17,11 @@ import java.awt.Color;
  * A Node is immutable.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  *
  * @see BinaryTree
  */
-public final class Node implements Cloneable {
+public final class Node implements Cloneable, Serializable {
 
   /**
    * The contents of the node.
@@ -37,6 +37,11 @@ public final class Node implements Cloneable {
    * The node's color.
    */
   private Color theColor;
+
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Constructs a black Node with the given contents and a tag of 0.

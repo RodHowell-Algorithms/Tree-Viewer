@@ -14,7 +14,7 @@ import java.awt.Color;
  * Objects.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  */
 public interface Colorizer {
 

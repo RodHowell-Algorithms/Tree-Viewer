@@ -9,7 +9,7 @@ package edu.ksu.cis.viewer;
 
 import java.awt.Font;
 import javax.swing.JComponent;
-
+import java.io.Serializable;
 
 
 
@@ -26,7 +26,7 @@ import javax.swing.JComponent;
  * method of {@link java.lang.Object Object} in order to clone themselves.
  *
  * @author      Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  *
  * @see         AVLTree
  * @see         BinarySearchTree
@@ -34,7 +34,7 @@ import javax.swing.JComponent;
  * @see         java.lang.Cloneable
  * @see         java.lang.Object
  */
-public interface BSTInterface {
+public interface BSTInterface extends Serializable {
 
   /** 
    * Returns the result of inserting <code>key</code> into this tree.  If

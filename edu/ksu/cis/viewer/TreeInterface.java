@@ -19,7 +19,7 @@ package edu.ksu.cis.viewer;
  * are used, {@link #isEmpty isEmpty} should always return <code>false</code>.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  *
  * @see        TreeDrawing
  */

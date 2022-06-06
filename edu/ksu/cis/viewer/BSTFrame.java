@@ -43,7 +43,7 @@ import java.awt.Point;
  * the trees.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  *
  * @see         BSTInterface
  * @see         AVLTree
@@ -80,12 +80,12 @@ public class BSTFrame extends JFrame {
   /**
    * The trees accessible via the "Back" button.
    */
-  private Stack history;
+  private Stack<BSTInterface> history;
 
   /**
    * The trees accessible via the "Forward" button.
    */
-  private Stack future;
+  private Stack<BSTInterface> future;
 
   /**
    * The choice box for selecting the font size for rendering the tree.
@@ -119,12 +119,18 @@ public class BSTFrame extends JFrame {
   private Font currentFont;
 
   /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * Constructs a BSTFrame for manipulating the given tree.
    * @param      t      the tree to manipulate
    * @param      title  the title of the window
    */
   public BSTFrame(BSTInterface t, String title) {
-    this(t, title, lastSize, lastStyle, new Stack(), new Stack());
+    this(t, title, lastSize, lastStyle, new Stack<BSTInterface>(),
+	 new Stack<BSTInterface>());
   }
 
   /**
@@ -139,7 +145,8 @@ public class BSTFrame extends JFrame {
    * @see java.awt.Font java.awt.Font.Font(String, int, int)
    */
   public BSTFrame(BSTInterface t, String title, int size, int style) {
-    this(t, title, size, style, new Stack(), new Stack());
+    this(t, title, size, style, new Stack<BSTInterface>(),
+	 new Stack<BSTInterface>());
   }
   
   /**
@@ -158,7 +165,7 @@ public class BSTFrame extends JFrame {
    */
   private BSTFrame(BSTInterface t, String title,
 		   int fontSize, int fontStyle,
-		   Stack history, Stack future) {
+		   Stack<BSTInterface> history, Stack<BSTInterface> future) {
     if (fontSize < 1) 
       throw new IllegalArgumentException();
     theTree = t;
@@ -274,7 +281,7 @@ public class BSTFrame extends JFrame {
     history.push(theTree);
     theTree = ((BSTInterface) theTree.clone()).put(input.getText());
     if (!future.empty()) {
-      future = new Stack();
+      future = new Stack<BSTInterface>();
     }
     backBtn.setEnabled(true);
     redisplay();
@@ -288,7 +295,7 @@ public class BSTFrame extends JFrame {
     history.push(theTree);
     theTree = ((BSTInterface) theTree.clone()).remove(input.getText());
     if (!future.empty()) {
-      future = new Stack();
+      future = new Stack<BSTInterface>();
     }
     backBtn.setEnabled(true);
     redisplay();
@@ -301,7 +308,7 @@ public class BSTFrame extends JFrame {
     if (!history.empty()) {
       future.push(theTree);
       forwardBtn.setEnabled(true);
-      theTree = (BSTInterface) history.pop();
+      theTree = history.pop();
       if (history.empty()) {
 	      backBtn.setEnabled(false);
       }
@@ -316,7 +323,7 @@ public class BSTFrame extends JFrame {
     if (!future.empty()) {
       history.push(theTree);
       backBtn.setEnabled(true);
-      theTree = (BSTInterface) future.pop();
+      theTree = future.pop();
       if (future.empty()) {
 	      forwardBtn.setEnabled(false);
       }
@@ -330,9 +337,8 @@ public class BSTFrame extends JFrame {
   public synchronized void makeClone() {
     int font = Integer.parseInt(fonts.getSelectedItem().toString());
     JFrame f = new BSTFrame((BSTInterface) theTree.clone(), getTitle(),
-			    font, getStyle(),
-			    (Stack) history.clone(),
-			    (Stack) future.clone());
+			    font, getStyle(), history.clone(),
+			    future.clone());
     f.setSize(getSize());
     f.setVisible(true);
     input.requestFocus();

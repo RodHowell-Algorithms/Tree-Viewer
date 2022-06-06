@@ -28,7 +28,7 @@ import javax.swing.JPanel;
  * underlying <code>TreeDrawing</code>, so the foreground color is unused.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  *
  * @see TreeDrawing
  */
@@ -44,6 +44,11 @@ public class TreeComponent extends JPanel {
    */
   public static final Font DEFAULT_FONT = 
     new Font("Monospaced", Font.PLAIN, 12);
+
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Constructs a new TreeComponent displaying the given TreeDrawing using

@@ -49,7 +49,7 @@ import java.awt.event.WindowEvent;
  * the program terminates.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  *
  * @see         BSTFrame
  * @see         AATree
@@ -74,6 +74,11 @@ public class Viewer extends Panel {
    * Indicates whether the program is running in monochrome mode.
    */
   private static boolean monochrome = false;
+
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Constructs an instance of the Viewer GUI with default size.

@@ -12,7 +12,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Point;
-
+import java.io.Serializable;
 
 
 
@@ -50,13 +50,13 @@ import java.awt.Point;
  * which children may be empty in trees with other branching factors.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  *
  * @see BinaryTree
  * @see TreeInterface
  * @see Colorizer
  */
-public final class TreeDrawing {
+public final class TreeDrawing implements Serializable {
 
   /**
    * A string representation of the root of the tree.
@@ -109,6 +109,11 @@ public final class TreeDrawing {
    * The character used as the standard for determining the character width.
    */
   public static final char STANDARD_CHARACTER = 'm';
+
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Constructs a drawing of an empty tree.

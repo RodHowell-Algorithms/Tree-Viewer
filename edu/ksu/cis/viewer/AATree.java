@@ -23,7 +23,7 @@ import javax.swing.*;
  * of a red node must always be black. 
  *
  * @author 	Stella Houston and Rod Howell
- *              (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *              (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  */
 public final class AATree implements BSTInterface {
   
@@ -33,6 +33,11 @@ public final class AATree implements BSTInterface {
    * @see Node
    */
   private BinaryTree theTree;
+
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Constructs an empty AA Tree.  

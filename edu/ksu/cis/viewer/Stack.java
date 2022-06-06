@@ -8,7 +8,7 @@
 package edu.ksu.cis.viewer;
 
 import java.util.EmptyStackException;
-
+import java.io.Serializable;
 
 
 /**
@@ -17,29 +17,33 @@ import java.util.EmptyStackException;
  * for the underlying storage allows a shallow clone to be sufficient.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  */
-public final class Stack implements Cloneable {
+public final class Stack<E extends Serializable> implements Serializable {
 
   /**
    * The structure used for the stack.
    */
-  private ConsList theStack;
+  private ConsList<E> theStack;
 
-  
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * Constructs an empty Stack.
    */
   public Stack() {
-    theStack = new ConsList();
+    theStack = new ConsList<E>();
   }
 
   /**
    * Pushes the given Object onto the top of the stack.
    * @param   obj                  the object to push onto the stack
    */
-  public void push(Object obj) {
-    theStack = new ConsList(obj, theStack);
+  public void push(E obj) {
+    theStack = new ConsList<E>(obj, theStack);
   }
 
   /**
@@ -47,11 +51,11 @@ public final class Stack implements Cloneable {
    * @return  the object at the top of the stack
    * @throws  EmptyStackException  If the stack is empty.
    */
-  public Object pop() throws EmptyStackException {
+  public E pop() throws EmptyStackException {
     if (theStack.isEmpty()) {
       throw new EmptyStackException();
     }
-    Object top = theStack.getHead();
+    E top = theStack.getHead();
     theStack = theStack.getTail();
     return top;
   }
@@ -69,13 +73,9 @@ public final class Stack implements Cloneable {
    * Because the underlying structure is immutable, a shallow clone is
    * performed.
    */
-  public Object clone() {
-    try {
-      return super.clone();
-    }
-    catch (CloneNotSupportedException e) { // This shouldn't happen.
-      e.printStackTrace();
-      return new Stack();
-    }
+  public Stack<E> clone() {
+    Stack<E> theClone = new Stack<E>();
+    theClone.theStack = theStack;
+    return theClone;
   }
 }

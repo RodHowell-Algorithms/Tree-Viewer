@@ -8,16 +8,16 @@
 package edu.ksu.cis.viewer;
 
 import java.awt.Font;
-
+import java.io.Serializable;
 
 
 /**
  * An immutable binary tree that can draw itself.
  *
  * @author Rod Howell
- *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
+ *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  */
-public final class BinaryTree implements Cloneable {
+public final class BinaryTree implements Cloneable, Serializable {
 
   /**
    * Is <code>true</code> if this tree is empty.
@@ -43,6 +43,11 @@ public final class BinaryTree implements Cloneable {
    * An abstract drawing of this tree.
    */
   private TreeDrawing drawing;
+
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Constructs an empty BinaryTree.
