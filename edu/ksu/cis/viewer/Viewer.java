@@ -25,8 +25,12 @@ import java.awt.event.WindowEvent;
 
 /**
  * This is the driver class for the Search Tree Viewer.  It now 
- * will only run as an application.
- * It displays the following GUI:
+ * will only run as an application. It recognizes a single command-line 
+ * argument, "mono", which indicates that the program should run in 
+ * monochrome mode, displaying red nodes as gray (for AA Trees and 
+ * Red-Black Trees). Any other command-line arguments are ignored.
+ *
+ * The program displays the following GUI:
  * <p>
  * <img alt="The tree viewer main GUI." src="Viewer.gif">
  * <p>
@@ -41,8 +45,8 @@ import java.awt.event.WindowEvent;
  * <li> Trie
  * </ul>
  * When the Start button is pressed, a frame for creating and manipulating an
- * instance of the current choice is displayed.  If the GUI is running as an
- * application, when it is closed, the program terminates.
+ * instance of the current choice is displayed.  When this window is closed, 
+ * the program terminates.
  *
  * @author Rod Howell
  *         (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
@@ -67,6 +71,11 @@ public class Viewer extends Panel {
 				  "Splay Tree", "Trie"});
 
   /**
+   * Indicates whether the program is running in monochrome mode.
+   */
+  private static boolean monochrome = false;
+
+  /**
    * Constructs an instance of the Viewer GUI with default size.
    */
   public Viewer() {
@@ -89,9 +98,14 @@ public class Viewer extends Panel {
   /**
    * Starts the viewer as an application.  Opens a Frame containing the 
    * Viewer GUI.  If the Frame is closed, the application terminates.
-   * @param         args    command-line arguments (unused)
+   * @param         args    command-line arguments
    */
   public static void main(String args[]) {
+    for (int i = 0; i < args.length; i++) {
+      if (args[i].equals("mono")) {
+	monochrome = true;
+      }
+    }
     Viewer v = new Viewer();
     JFrame fr = new JFrame();
     fr.getContentPane().add(v);
@@ -117,7 +131,8 @@ public class Viewer extends Panel {
       new BSTFrame(new BinarySearchTree(), "Binary Search Tree").setVisible(true);
       break;
     case 3:
-      new BSTFrame(new RedBlackTree(), "Red-Black Tree").setVisible(true);
+      new BSTFrame(new RedBlackTree(),
+		   "Red-Black Tree").setVisible(true);
       break;
     case 4:
       new BSTFrame(new PatriciaTrie(), "Patricia Trie").setVisible(true);
@@ -129,6 +144,15 @@ public class Viewer extends Panel {
       new BSTFrame(new Trie(), "Trie").setVisible(true);
       break;
     }
+  }
+
+  /**
+   * Gets whether the program is running in monochrome mode.
+   * @return   whether the program is running in monochrome mode.
+   */
+  public static boolean isMonochrome()
+  {
+    return monochrome;
   }
 }
 

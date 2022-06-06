@@ -17,8 +17,12 @@ There are two main uses of this package.
    <pre>
    java -jar viewer.jar
    </pre>
-
    To create and manipulate a tree, enter any string in the text field in the upper left-hand corner, and press either the Put button to add that string as a key to the tree, or the Remove button to remove that key from the tree. The keys will be maintained in lexicographic order. The Back and Forward buttons allow you to move through the history of your tree construction. The Clone button opens a new window with an exact copy of the tree and history in your current window; the tree in this window can then be manipulated independently.
+
+   For AA Trees and Red Black Trees, red nodes are shown containing red text. Because the colors red and black are indistinguishable for some, monochrome support is provided through the JAR archive [`monochrome-viewer.jar`](https://github.com/RodHowell-Algorithms/Tree-Viewer/raw/main/monochrome-viewer.jar), which can be used in the same way as `viewer.jar`. The only difference in this version is that red nodes are shown containing gray text (using the "Bold" option on the window displaying the trees makes it easier to distinguish these colors). Alternatively, the viewer can be launched in monochrome mode by using the `mono` option when opening `viewer.jar`:
+   <pre>
+   java -jar viewer.jar mono
+   </pre>
 
    **Important Note:** This app treats all keys as strings. You may enter numbers, but be aware that they will be treated as strings (e.g., "10" < "5"). Virtually all of the questions I've received regarding this program have reflected a misunderstanding of this fact.
 

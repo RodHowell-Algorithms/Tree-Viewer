@@ -9,8 +9,11 @@
  *      trees, the user may move forward or backward through the history of 
  *      modifications, and trees with their histories may be cloned and 
  *      manipulated independently. The driver for this program is the 
- *      {@link Viewer} class. It 
- *      requires no arguments or other supporting packages.
+ *      {@link Viewer} class. It recognizes the command-line argument "mono",
+ *      which spcifies that the program will run in monochrome mode (red nodes
+ *      in AA Trees and Red-Black Trees are shown as gray). All other command-
+ *      line arguments are ignored. An alternative driver for running in 
+ *      monochrome mode is {@link MonochromeViewer}.
  *   </li>
  *   <li>
  *     A set of tree-viewing tools for use within user programs. A developer 
@@ -22,6 +25,7 @@
  *   </li>
  * </ol>
  * @see Viewer
+ * @see MonochromeViewer
  * @see TreeInterface
  * @see Colorizer
  * @see TreeDrawing

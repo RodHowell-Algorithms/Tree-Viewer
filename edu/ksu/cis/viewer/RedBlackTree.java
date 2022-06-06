@@ -91,8 +91,9 @@ public final class RedBlackTree implements BSTInterface {
    * Returns <code>true</code> if <code>t</code> has a red root.
    */
   private static boolean hasRedRoot(BinaryTree t) {
+    Color red = Viewer.isMonochrome() ? Color.gray : Color.red;
     if (t.isEmpty()) return false;
-    else return t.getRoot().getColor().equals(Color.red);
+    else return t.getRoot().getColor().equals(red);
   }  
 
   /**
@@ -125,11 +126,11 @@ public final class RedBlackTree implements BSTInterface {
    *              <code>t</code>.
    */
   private static BinaryTree put(String key, BinaryTree t) {
+    Color red = Viewer.isMonochrome() ? Color.gray : Color.red;
     if (t.isEmpty()) {  // Insert here
 
       // The node must be red because t contains no black nodes.
-
-      return new BinaryTree(new Node(key, Color.red), null, null);
+      return new BinaryTree(new Node(key, red), null, null);
     }
     else {
       Node root = t.getRoot();
@@ -154,7 +155,7 @@ public final class RedBlackTree implements BSTInterface {
 	      // This yields a red-black tree, except that it has a red root.
 
 	      return new BinaryTree(new Node(root.getContents(),
-					     Color.red),
+					     red),
 				    colorRoot(left, Color.black),
 				    colorRoot(right, Color.black));
 	    }
@@ -177,7 +178,7 @@ public final class RedBlackTree implements BSTInterface {
 	      // do a rotate right.  This yields a red-black tree.
 
 	      return rotateRight(new Node(root.getContents(),
-					  Color.red),
+					  red),
 				 colorRoot(left, Color.black),
 				 right);
 	    }
@@ -209,7 +210,7 @@ public final class RedBlackTree implements BSTInterface {
 	      // This yields a red-black tree, except that it has a red root.
 
 	      return new BinaryTree(new Node(root.getContents(),
-					     Color.red),
+					     red),
 				    colorRoot(left, Color.black),
 				    colorRoot(right, Color.black));
 	    }
@@ -232,7 +233,7 @@ public final class RedBlackTree implements BSTInterface {
 	      // do a rotate left.  This yields a red-black tree.
 
 	      return rotateLeft(new Node(root.getContents(),
-					 Color.red),
+					 red),
 				left,
 				colorRoot(right, Color.black));
 	    }
@@ -373,8 +374,9 @@ public final class RedBlackTree implements BSTInterface {
    */
   private static TreeBooleanPair minToRoot(BinaryTree t) {
     BinaryTree left = t.getLeftChild();
+    Color red = Viewer.isMonochrome() ? Color.gray : Color.red;
     if (left.isEmpty()) {  // The root is the minimum
-      if (t.getRoot().getColor().equals(Color.red)) {
+      if (t.getRoot().getColor().equals(red)) {
 
 	// If the root is red, we can delete it with no problem.
 
@@ -452,6 +454,7 @@ public final class RedBlackTree implements BSTInterface {
       // root to any empty subtree in right.  Furthermore, left does not have 
       // a red root.
 
+      Color red = Viewer.isMonochrome() ? Color.gray : Color.red;
       if (hasRedRoot(right)) {
 
 	// Case 1:  root is black, left is black (or empty), and right is red.
@@ -459,7 +462,7 @@ public final class RedBlackTree implements BSTInterface {
 	// contain at least two black nodes, right has two black children.  We
 	// first change the colors of root and right, then do a rotateLeft.
 
-	root = new Node(root.getContents(), Color.red);
+	root = new Node(root.getContents(), red);
 	right = colorRoot(right, Color.black);
 	BinaryTree t = rotateLeft(root, left, right);
 

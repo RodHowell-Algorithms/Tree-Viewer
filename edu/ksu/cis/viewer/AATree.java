@@ -14,9 +14,13 @@ import javax.swing.*;
 
 /**
  * An immutable AA tree that can draw itself.  An AA tree is a binary
- * search tree such that if it is nonempty, the level of a node is 1 if the
- * node is a leaf, the node is red if it is the same level as its parent, and
- * the node is black if it is one level less than the level of the parent.
+ * search tree in which each node has a level and a color, either red or 
+ * black. The level of any leaf is 1, and the level of any non-leaf is one
+ * greater than the level of its left child (if it has one), and either equal
+ * to or one greater than the level of its right child (if it has one). A node
+ * is considered to be red if it has the same level as its parent; otherwise,
+ * it is considered to be black (the root is always black). The parent
+ * of a red node must always be black. 
  *
  * @author 	Stella Houston and Rod Howell
  *              (<a href="mailto:howell@cis.ksu.edu">howell@cis.ksu.edu</a>)
@@ -268,6 +272,7 @@ public final class AATree implements BSTInterface {
    */
   private static BinaryTree getBinaryTree(Node root,BinaryTree left,   
                                           BinaryTree right) {
+    Color red = Viewer.isMonochrome() ? Color.gray : Color.red;
     if ((!left.isEmpty())&&(left != null)) {
       left = new BinaryTree(new Node(left.getRoot().getContents(),left.getRoot().getTag()),
                             left.getLeftChild(),left.getRightChild());}
@@ -275,7 +280,7 @@ public final class AATree implements BSTInterface {
     if ((!right.isEmpty())&&(right != null)) {
       if (level(right) == root.getTag()) {
         right = new BinaryTree(new Node(right.getRoot().getContents(),
-                                        right.getRoot().getTag(),Color.red),
+                                        right.getRoot().getTag(),red),
                                right.getLeftChild(),right.getRightChild());}
       else {
         right = new BinaryTree(new Node(right.getRoot().getContents(),level(right)),
