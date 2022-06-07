@@ -1,57 +1,63 @@
 /*
- * Stack.java   11/15/99
+ * GenericStack.java   06/07/2022
  *
- * Copyright (c) 1998, 1999, Rod Howell, All Rights Reserved.
+ * Copyright (c) 1998, 1999, 2022, Rod Howell, All Rights Reserved.
  *
  */
 
 package edu.ksu.cis.viewer;
 
 import java.util.EmptyStackException;
-
+import java.io.Serializable;
 
 
 /**
  * A stack built from an immutable {@link ConsList ConsList}.  Using an 
  * immutable structure
  * for the underlying storage allows a shallow clone to be sufficient.
+ * @param <E> the type of the elements in the stack
  *
  * @author Rod Howell
  *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  */
-public final class Stack implements Cloneable {
+public final class GenericStack<E extends Serializable>
+  implements Serializable {
 
   /**
    * The structure used for the stack.
    */
-  private ConsList theStack;
+  private GenericConsList<E> theStack;
 
-  
+  /**
+   * Used for consistency in serialization.
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * Constructs an empty Stack.
    */
-  public Stack() {
-    theStack = new ConsList();
+  public GenericStack() {
+    theStack = new GenericConsList<E>();
   }
 
   /**
    * Pushes the given Object onto the top of the stack.
    * @param   obj                  the object to push onto the stack
    */
-  public void push(Object obj) {
-    theStack = new ConsList(obj, theStack);
+  public void push(E obj) {
+    theStack = new GenericConsList<E>(obj, theStack);
   }
 
   /**
-   * Removes the Object from the top of the stack and returns it.
-   * @return  the object at the top of the stack
+   * Removes the element from the top of the stack and returns it.
+   * @return  the element removed from the top of the stack
    * @throws  EmptyStackException  If the stack is empty.
    */
-  public Object pop() throws EmptyStackException {
+  public E pop() throws EmptyStackException {
     if (theStack.isEmpty()) {
       throw new EmptyStackException();
     }
-    Object top = theStack.getHead();
+    E top = theStack.getHead();
     theStack = theStack.getTail();
     return top;
   }
@@ -69,13 +75,9 @@ public final class Stack implements Cloneable {
    * Because the underlying structure is immutable, a shallow clone is
    * performed.
    */
-  public Object clone() {
-    try {
-      return super.clone();
-    }
-    catch (CloneNotSupportedException e) { // This shouldn't happen.
-      e.printStackTrace();
-      return new Stack();
-    }
+  public GenericStack<E> clone() {
+    GenericStack<E> theClone = new GenericStack<E>();
+    theClone.theStack = theStack;
+    return theClone;
   }
 }

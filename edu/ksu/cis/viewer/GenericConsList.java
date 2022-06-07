@@ -1,22 +1,24 @@
 /*
- * ConsList.java     11/13/99
+ * GenericConsList.java     06/07/2022
  *
- * Copyright (c) 1998, 1999, Rod Howell, All Rights Reserved.
+ * Copyright (c) 1998, 1999, 2022, Rod Howell, All Rights Reserved.
  *
  */
 
 package edu.ksu.cis.viewer;
 
-
+import java.io.Serializable;
 
 /**
- * An immutable linear recursive structure with a head, which is an Object, and
- * a tail, which is a ConsList.
+ * An immutable linear recursive structure with a head and
+ * a tail, which is a GenericConsList.
+ * @param <E> the type of the elements in the head of each list
  *
  * @author Rod Howell
  *         (<a href="mailto:rhowell@ksu.edu">rhowell@ksu.edu</a>)
  */
-public final class ConsList {
+public final class GenericConsList<E extends Serializable>
+  implements Serializable {
 
   /**
    * Is <code>true</code> if this <code>ConsList</code> is empty.
@@ -24,32 +26,38 @@ public final class ConsList {
   private boolean empty;
 
   /**
-   * The head of this <code>ConsList</code>.
+   * The head of this <code>GenericConsList</code>.
    */
-  private Object head;
+  private E head;
 
   /**
-   * The tail of this <code>ConsList</code>.
+   * The tail of this <code>GenericConsList</code>.
    */
-  private ConsList tail;
+  private GenericConsList<E> tail;
 
   /**
-   * Constructs an empty ConsList.
+   * Used for consistency in serialization.
    */
-  public ConsList() {
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constructs an empty GenericConsList.
+   */
+  public GenericConsList() {
     empty = true;
   }
 
   /**
-   * Constructs a ConsList with the given head and tail.  If the given tail is
-   * <code>null</code>, an empty ConsList is used in its place.
+   * Constructs a Generic ConsList with the given head and tail.  If the given 
+   * tail is
+   * <code>null</code>, an empty GenericConsList is used in its place.
    * @param    h        the head of the list
    * @param    lst      the tail of the list
    */
-  public ConsList(Object h, ConsList lst) {
+  public GenericConsList(E h, GenericConsList<E> lst) {
     empty = false;
     head = h;
-    tail = lst == null ? new ConsList() : lst;
+    tail = lst == null ? new GenericConsList<E>() : lst;
   }
 
   /**
@@ -66,7 +74,7 @@ public final class ConsList {
    * @exception         EmptyListException
    *                    If this list is empty.
    */
-  public Object getHead() throws EmptyListException {
+  public E getHead() throws EmptyListException {
     if (empty) {
       throw new EmptyListException();
     }
@@ -79,7 +87,7 @@ public final class ConsList {
    * @exception         EmptyListException
    *                    If this list is empty.
    */
-  public ConsList getTail() throws EmptyListException {
+  public GenericConsList<E> getTail() throws EmptyListException {
     if (empty) {
       throw new EmptyListException();
     }

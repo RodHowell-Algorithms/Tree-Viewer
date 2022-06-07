@@ -80,12 +80,12 @@ public class BSTFrame extends JFrame {
   /**
    * The trees accessible via the "Back" button.
    */
-  private Stack<BSTInterface> history;
+  private GenericStack<BSTInterface> history;
 
   /**
    * The trees accessible via the "Forward" button.
    */
-  private Stack<BSTInterface> future;
+  private GenericStack<BSTInterface> future;
 
   /**
    * The choice box for selecting the font size for rendering the tree.
@@ -129,8 +129,8 @@ public class BSTFrame extends JFrame {
    * @param      title  the title of the window
    */
   public BSTFrame(BSTInterface t, String title) {
-    this(t, title, lastSize, lastStyle, new Stack<BSTInterface>(),
-	 new Stack<BSTInterface>());
+    this(t, title, lastSize, lastStyle, new GenericStack<BSTInterface>(),
+	 new GenericStack<BSTInterface>());
   }
 
   /**
@@ -145,8 +145,8 @@ public class BSTFrame extends JFrame {
    * @see java.awt.Font java.awt.Font.Font(String, int, int)
    */
   public BSTFrame(BSTInterface t, String title, int size, int style) {
-    this(t, title, size, style, new Stack<BSTInterface>(),
-	 new Stack<BSTInterface>());
+    this(t, title, size, style, new GenericStack<BSTInterface>(),
+	 new GenericStack<BSTInterface>());
   }
   
   /**
@@ -165,7 +165,8 @@ public class BSTFrame extends JFrame {
    */
   private BSTFrame(BSTInterface t, String title,
 		   int fontSize, int fontStyle,
-		   Stack<BSTInterface> history, Stack<BSTInterface> future) {
+		   GenericStack<BSTInterface> history,
+		   GenericStack<BSTInterface> future) {
     if (fontSize < 1) 
       throw new IllegalArgumentException();
     theTree = t;
@@ -281,7 +282,7 @@ public class BSTFrame extends JFrame {
     history.push(theTree);
     theTree = ((BSTInterface) theTree.clone()).put(input.getText());
     if (!future.empty()) {
-      future = new Stack<BSTInterface>();
+      future = new GenericStack<BSTInterface>();
     }
     backBtn.setEnabled(true);
     redisplay();
@@ -295,7 +296,7 @@ public class BSTFrame extends JFrame {
     history.push(theTree);
     theTree = ((BSTInterface) theTree.clone()).remove(input.getText());
     if (!future.empty()) {
-      future = new Stack<BSTInterface>();
+      future = new GenericStack<BSTInterface>();
     }
     backBtn.setEnabled(true);
     redisplay();

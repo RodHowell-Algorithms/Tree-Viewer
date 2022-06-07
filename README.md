@@ -33,7 +33,7 @@ There are two main uses of this package.
    java -cp .;viewer.jar MyClass.java
    </pre>
 
-   (On unix, the ";" is replaced by a ":".)
+   (Depending on your shell, the `;` above may need to be escaped or replaced with a `:`.)
 
 The complete package documentation can be found in the `doc` folder.
 
