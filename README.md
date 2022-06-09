@@ -26,7 +26,7 @@ There are two main uses of this package.
 
    **Important Note:** This app treats all keys as strings. You may enter numbers, but be aware that they will be treated as strings (e.g., "10" < "5"). Virtually all of the questions I've received regarding this program have reflected a misunderstanding of this fact.
 
-2. **Tools for viewing trees built from user code.** In order to be able to implement a tree that can be displayed using this package, you must write your tree class to implement **TreeInterface**. If you wish to have colored nodes, you will also need to provide a class that implements **Colorizer**. You may then use the **TreeDrawing**, **TreeComponent**, and/or **TreeFrame** classes to display your tree. If you didn't add this package to your CLASSPATH, you will need to specify it when you compile and run your program; e.g.:
+2. **Tools for viewing trees built from user code.** In order to be able to implement a tree that can be displayed using this package, you must write your tree class to implement [**TreeInterface**](https://rodhowell-algorithms.github.io/Tree-Viewer/doc/edu/ksu/cis/viewer/TreeInterface.html). If you wish to have colored nodes, you will also need to provide a class that implements [**Colorizer**](https://rodhowell-algorithms.github.io/Tree-Viewer/doc/edu/ksu/cis/viewer/Colorizer.html). You may then use the [**TreeDrawing**](https://rodhowell-algorithms.github.io/Tree-Viewer/doc/edu/ksu/cis/viewer/TreeDrawing.html), [**TreeComponent**](https://rodhowell-algorithms.github.io/Tree-Viewer/doc/edu/ksu/cis/viewer/TreeComponent.html), and/or [**TreeFrame**](https://rodhowell-algorithms.github.io/Tree-Viewer/doc/edu/ksu/cis/viewer/TreeFrame.html) classes to display your tree. If you didn't add this package to your CLASSPATH, you will need to specify it when you compile and run your program; e.g.:
 
    <pre>
    javac -classpath viewer.jar *.java
@@ -35,7 +35,7 @@ There are two main uses of this package.
 
    (Depending on your shell, the `;` above may need to be escaped or replaced with a `:`.)
 
-The complete package documentation can be found in the `doc` folder.
+The [complete package documentation](https://rodhowell-algorithms.github.io/Tree-Viewer/doc/edu/ksu/cis/viewer/package-summary.html) can be found in the `doc` folder.
 
 ## Compiling the Code
 
@@ -59,5 +59,4 @@ The following programs use the viewer package to render trees:
 - [Minimum-Sized AVL Tree Viewer](https://github.com/RodHowell-Algorithms/Min-AVL-Trees)
 - [Huffman Tree Viewer](https://github.com/RodHowell-Algorithms/Huffman-Tree-Viewer)
 - [Suffix Tree Viewer](https://github.com/RodHowell-Algorithms/Suffix-Tree-Viewer)
-
 
