@@ -4,6 +4,8 @@
 
 The remainder of this page describes how to install and use the package on your own platform. The Java<sup>TM</sup> SE Runtime Environment (JRE) is required to run the viewer as a stand-alone application, whereas The Java<sup>TM</sup> SE Development Kit (JDK), which includes the JRE, is required to use the class library in your own Java<sup>TM</sup> programs. Both packages can be downloaded from [java.com](https://java.com/en/).
 
+See also the [Release Notes](https://github.com/RodHowell-Algorithms/Tree-Viewer/blob/main/Release%20Notes%202_0.md) for this version.
+
 ## Installation
 
 To install the package, simply download the JAR archive [`viewer.jar`](https://github.com/RodHowell-Algorithms/Tree-Viewer/raw/main/viewer.jar). 
@@ -35,8 +37,6 @@ There are two main uses of this package.
 
    (Depending on your shell, the `;` above may need to be escaped or replaced with a `:`.)
 
-The [complete package documentation](https://rodhowell-algorithms.github.io/Tree-Viewer/doc/edu/ksu/cis/viewer/package-summary.html) can be found in the `doc` folder.
-
 ## Compiling the Code
 
 If you wish to modify the code, you will need to download a copy, either by cloning it with `git` or by downloading and decompressing a [ZIP archive](https://github.com/RodHowell-Algorithms/Tree-Viewer/archive/refs/heads/main.zip). To compile the code, assuming you have the [Java Development Kit (JDK)](https://www.java.com/en/download/manual.jsp) installed, enter the following from a command line within the root folder of the project (i.e., the one containing the subfolders, `doc` and `edu`):
@@ -49,6 +49,13 @@ javac edu/ksu/cis/viewer/*.java
 
 <pre>
 java edu.ksu.cis.viewer.Viewer
+</pre>
+## Documentation
+
+The [complete package documentation](https://rodhowell-algorithms.github.io/Tree-Viewer/doc/edu/ksu/cis/viewer/package-summary.html) can be found in the `doc` folder. To regenerate the documentation using the provided options file, `javadoc-options.txt`:
+
+<pre>
+javadoc @javadoc-options.txt
 </pre>
 
 ## Related Applications
